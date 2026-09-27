@@ -1,0 +1,43 @@
+{% extends "portal/base.html" %}
+{% block title %}Home | Student Portal{% endblock %}
+{% block content %}
+<h1>Welcome to Student Portal</h1>
+<div class="carousel">
+    <div class="slide active" >
+        <h2>Learn Django</h2>
+        <p>Build dynamic web applications.</p>
+    </div>
+    <div class="slide">
+        <h2>Practice Python</h2>
+        <p>Improve your programming skills.</p>
+    </div>
+    <div class="slide">
+        <h2>Work with Databases</h2>
+        <p>Store and retrieve student details.</p>
+    </div>
+</div>
+<p>Session visit count: {{ visit_count }}</p>
+<h2>Registered Students</h2>
+{% if students %}
+    <div class="table-wrap">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.course }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>No students registered yet.</p>
+{% endif %}
+{% endblock %}
